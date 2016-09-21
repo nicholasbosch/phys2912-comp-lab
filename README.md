@@ -1,2 +1,2 @@
-# phys2912-comp-lab
+# PHYS2912 Comp Lab
 Code written for PHYS2912 Computational Lab, Semester 2, 2016
