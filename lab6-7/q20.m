@@ -11,11 +11,11 @@ i = 1;
 for theta = theta_range
     Stheta = 1/2 * [cos(theta), sin(theta); sin(theta), -cos(theta)];
     states = random_spins(n_atoms);
-    [outcomes, fstates] = measure(states, Sz);
+    [outcomes1, fstates1] = measure(states, Sz);
     % Found our issue here, we needed to be using outcomes > 0 rather than outcomes == 0.5 
-    [outcomes, fstates] = measure(fstates(:,(outcomes > 0)), Stheta);
-    [outcomes, fstates] = measure(fstates(:,(outcomes > 0)), Sz);
-    probs(i) = length(outcomes(outcomes == 0.5))/length(outcomes);
+    [outcomes2, fstates2] = measure(fstates1(:,(outcomes1 > 0)), Stheta);
+    [outcomes3, fstates3] = measure(fstates2(:,(outcomes2 > 0)), Sz);
+    probs(i) = length(outcomes3(outcomes3 >0))/length(outcomes1);
     i = i + 1;
 end
 
